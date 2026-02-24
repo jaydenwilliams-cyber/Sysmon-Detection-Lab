@@ -41,4 +41,13 @@ This confirms Sysmon successfully logged process creation activity.
 
 This lab showed how Sysmon enhances Windows logging by capturing detailed process creation data. Seeing the command line arguments inside Event Viewer demonstrates how security teams can track user activity and detect suspicious behavior. Sysmon is valuable for SOC analysts because it provides deeper visibility than default Windows logs.
 
+Screenshots
+Sysmon Installation
 
+Sysmon Log Location
+
+Sysmon Operational Log
+
+PowerShell Process Logging
+
+Additional Command Activity
