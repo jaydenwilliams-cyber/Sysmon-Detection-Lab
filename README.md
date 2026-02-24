@@ -92,6 +92,8 @@ This lab showed how Sysmon enhances Windows logging by capturing detailed proces
 ### PowerShell Process Logging
 ![PowerShell Event](screenshots/04-powershell-eventid1.png)
 
+![PowerShell Bypass NoProfile](screenshots/07-powershell-bypass-no-profile-test.png)
+
 ### Additional Command Activity
 ![Command Activity 1](screenshots/05-command-activity-whoami-ipconfig.png)
 
