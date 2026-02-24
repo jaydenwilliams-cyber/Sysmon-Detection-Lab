@@ -1,5 +1,9 @@
 # Sysmon Detection Lab
 
+Lab Summary
+
+In this lab, I installed Sysmon and configured it to log detailed process creation events. I validated logging by executing multiple commands and reviewing Event ID 1 entries inside the Sysmon Operational log. This demonstrates hands on experience with Windows logging and endpoint visibility.
+
 ## Objective
 Install Sysmon and verify that it logs process activity into Windows Event Viewer.
 
