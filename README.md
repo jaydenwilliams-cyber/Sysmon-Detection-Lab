@@ -94,10 +94,6 @@ This lab showed how Sysmon enhances Windows logging by capturing detailed proces
 
 ### Suspicious PowerShell Execution Test
 
-### Suspicious PowerShell Execution Test
-
-### Suspicious PowerShell Execution Test
-
 Command executed:
 
 ```powershell
