@@ -92,6 +92,13 @@ This lab showed how Sysmon enhances Windows logging by capturing detailed proces
 ### PowerShell Process Logging
 ![PowerShell Event](screenshots/04-powershell-eventid1.png)
 
+### Suspicious PowerShell Execution Test
+
+Command executed:
+
+```powershell
+powershell -ExecutionPolicy Bypass -NoProfile -Command "Write-Output test"
+
 ![PowerShell Bypass NoProfile](screenshots/07-powershell-bypass-no-profile-test.png)
 
 ### Additional Command Activity
