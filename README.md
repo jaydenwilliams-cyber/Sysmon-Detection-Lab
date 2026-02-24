@@ -36,6 +36,37 @@ Event ID 1 recorded:
 
 This confirms Sysmon successfully logged process creation activity.
 
+## Detection Use Case
+
+### Scenario
+
+An analyst wants to detect suspicious PowerShell activity on a Windows endpoint.
+
+PowerShell is commonly abused by attackers for reconnaissance, lateral movement, and execution of malicious scripts.
+
+### Detection Logic
+
+Monitor Sysmon Event ID 1 (Process Creation) for:
+
+- Image: powershell.exe
+- Suspicious command line arguments
+- Encoded commands
+- Execution from unusual parent processes
+
+### Example from This Lab
+
+In this lab, I executed:
+
+powershell -Command "Get-Process"
+
+Sysmon generated Event ID 1 with:
+
+- Image: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+- CommandLine: powershell -Command "Get-Process"
+- Log Name: Microsoft-Windows-Sysmon/Operational
+
+This confirms that Sysmon captures full command line arguments, which allows analysts to detect malicious or abnormal PowerShell usage.
+
 ## Key Findings
 
 - Sysmon provides detailed process visibility.
