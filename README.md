@@ -2,7 +2,7 @@
 
 ## Lab Summary
 
-In this lab, I installed Sysmon and configured it to log detailed process creation events. I validated logging by executing multiple commands and reviewing Event ID 1 entries in the Sysmon Operational log. This demonstrates hands on experience with Windows logging, process monitoring, and endpoint visibility.
+In this lab, I deployed Sysmon to enhance Windows logging and monitor process creation events. I validated logging by executing PowerShell commands and analyzing Sysmon Event ID 1 entries in Event Viewer. This demonstrates hands on experience with endpoint monitoring, process visibility, and detection of potentially suspicious activity.
 
 ## Objective
 
@@ -30,27 +30,25 @@ Install Sysmon and verify that it logs process activity into Windows Event Viewe
 ## Proof of Logging
 
 Event ID 1 recorded:
+
 - Image: powershell.exe
 - CommandLine: powershell -Command "Get-Process"
 - Log Name: Microsoft-Windows-Sysmon/Operational
 
-This confirms Sysmon successfully logged process creation activity.
+This confirms Sysmon successfully logged process creation activity and captured full command line arguments for analysis.
 
 ## Detection Use Case
 
 ### Scenario
 
-An analyst wants to detect suspicious PowerShell activity on a Windows endpoint.
-
-PowerShell is commonly abused by attackers for reconnaissance, lateral movement, and execution of malicious scripts.
+An analyst investigates potential misuse of PowerShell on a Windows endpoint. PowerShell is commonly abused by attackers for execution, reconnaissance, and lateral movement.
 
 ### Detection Logic
 
 Monitor Sysmon Event ID 1 (Process Creation) for:
 
-- Image: powershell.exe
-- Suspicious command line arguments
-- Encoded commands
+- Execution of powershell.exe
+- Suspicious or encoded command line arguments
 - Execution from unusual parent processes
 
 ### Example from This Lab
@@ -65,18 +63,22 @@ Sysmon generated Event ID 1 with:
 - CommandLine: powershell -Command "Get-Process"
 - Log Name: Microsoft-Windows-Sysmon/Operational
 
-This confirms that Sysmon captures full command line arguments, which allows analysts to detect malicious or abnormal PowerShell usage.
+This confirms that Sysmon captures detailed process execution data, allowing analysts to detect abnormal or malicious PowerShell activity.
 
 ## Key Findings
 
-- Sysmon provides detailed process visibility.
-- Command line arguments are captured.
-- Logs are stored in a dedicated Operational log.
-- This data is useful for security monitoring and threat detection.
+- Sysmon provides detailed process visibility beyond default Windows logs
+- Command line arguments are fully captured
+- Logs are stored in a dedicated Operational log
+- Process activity can be monitored and analyzed for suspicious behavior
+
+## Investigation Insight
+
+This lab demonstrates how endpoint telemetry can support security investigations. By analyzing process creation events and command line arguments, analysts can identify suspicious execution patterns and detect potential attacker behavior.
 
 ## What I Learned
 
-This lab showed how Sysmon enhances Windows logging by capturing detailed process creation data. Seeing the command line arguments inside Event Viewer demonstrates how security teams can track user activity and detect suspicious behavior. Sysmon is valuable for SOC analysts because it provides deeper visibility than default Windows logs.
+This lab showed how Sysmon enhances Windows logging by capturing detailed process creation data. Reviewing command line arguments in Event Viewer demonstrates how security teams track system activity and detect suspicious behavior. Sysmon provides deeper visibility than default logs and is a valuable tool for SOC analysts.
 
 ## Screenshots
 
@@ -96,9 +98,7 @@ This lab showed how Sysmon enhances Windows logging by capturing detailed proces
 
 Command executed:
 
-```powershell
 powershell -ExecutionPolicy Bypass -NoProfile -Command "Write-Output test"
-```
 
 ![PowerShell Bypass NoProfile](screenshots/07-powershell-bypass-no-profile-test.png)
 
